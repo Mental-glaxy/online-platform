@@ -8,6 +8,7 @@ import { MentalTrainerComponent } from './mental-trainer/mental-trainer.componen
 import { StatsComponent } from './stats/stats.component';
 import { EdThemesComponent } from './ed-themes/ed-themes.component';
 import { AccountComponent } from './account/account.component';
+import { RegisterComponent } from './register/register.component';
 
 @NgModule({
   declarations: [
@@ -16,7 +17,8 @@ import { AccountComponent } from './account/account.component';
     MentalTrainerComponent,
     StatsComponent,
     EdThemesComponent,
-    AccountComponent
+    AccountComponent,
+    RegisterComponent
   ],
   imports: [
     BrowserModule,
