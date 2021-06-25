@@ -27,7 +27,7 @@ export class GameService {
   setInfoGame(data:GameInfo):Observable<any> {
     return this.http.post<any>(`${this.url}/save-stats`, data, this.httpOptions)
   }
-  getInfoGame(data:GameInfo):Observable<any> {
+  getInfoGame():Observable<any> {
     return this.http.get<any>(`${this.url}/stats`, this.httpOptions)
   }
 }

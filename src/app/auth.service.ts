@@ -19,7 +19,8 @@ interface Register {
 export class AuthService {
   url = "http://localhost:5000"
   httpOptions = {
-    headers: new HttpHeaders({ 'Content-Type': 'application/json' })
+    headers: new HttpHeaders({ 'Content-Type': 'application/json', 'Access-Control-Allow-Origin': '*',
+    'Access-Control-Allow-Methods': 'GET, POST, PATCH, DELETE, PUT, OPTIONS' })
   };
   constructor(
     private http: HttpClient
