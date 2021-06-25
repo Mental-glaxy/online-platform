@@ -2,11 +2,9 @@
     align-items: center;
 }
 .bckg {
-    background-image: url(../../assets/bg-space.JPG);
-    background-repeat: no-repeat;
-    -webkit-background-size: cover;
-    -moz-background-size: cover;
-    -o-background-size: cover;
-    background-size: cover;
     max-height: 780px;
+}
+
+#nav-menu:hover {
+    box-shadow: 0 14px 4px rgba(0,0,0,0.15);
 }

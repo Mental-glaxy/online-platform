@@ -18,14 +18,22 @@ export class RegisterComponent implements OnInit {
       email: ['',Validators.email],
       password: ['']
     })
+    if(this.cookie.get('auth') === 'successful'){
+      this.router.navigate(['account'])
+    }
   }
   toLogin() {
     this.router.navigate(['login'])
   }
   register() {
-    console.log(this.registerForm.value)
-    this.auth.register(this.registerForm.value).subscribe((res) =>{
-      console.log(res)
+    this.auth.register(this.registerForm.value).subscribe((res:any) =>{
+      this.cookie.set('auth', res.status)
+      this.cookie.set('login', this.registerForm.value.login)
+      this.cookie.set('email', this.registerForm.value.email)
+      this.cookie.set('coins', '100')
+      this.cookie.set('balance', '4800 ₽')
+      this.cookie.set('token', res.token)
+      this.router.navigate(['account'])
     })
   }
 }
