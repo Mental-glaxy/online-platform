@@ -13,6 +13,8 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { AuthService } from './auth.service';
 import { GameService } from './game.service';
 import { HttpClientModule } from '@angular/common/http';
+import { ResultsTableComponent } from './results-table/results-table.component';
+import { NavbarAccountComponent } from './navbar-account/navbar-account.component';
 
 @NgModule({
   declarations: [
@@ -22,7 +24,9 @@ import { HttpClientModule } from '@angular/common/http';
     StatsComponent,
     EdThemesComponent,
     AccountComponent,
-    RegisterComponent
+    RegisterComponent,
+    ResultsTableComponent,
+    NavbarAccountComponent
   ],
   imports: [
     BrowserModule,

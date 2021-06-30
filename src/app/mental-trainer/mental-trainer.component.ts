@@ -19,7 +19,8 @@ export class MentalTrainerComponent implements OnInit {
    gameLoopVar:any
    lvl = '1'
    config:Params
-
+   color = '000000'
+   isRecords = false
   constructor() {
     this.config = {
       game_length:this.game_length,
@@ -27,7 +28,9 @@ export class MentalTrainerComponent implements OnInit {
       lvl: this.lvl
     }
    }
-
+   ngDoCheck() {
+     this.getRandomColor()
+   }
   ngOnInit(): void {
   }
   private generateNum(min:number, max:number) {
@@ -37,7 +40,6 @@ export class MentalTrainerComponent implements OnInit {
    private startAction() {
       this.result += this.generateNum(-9,9)
       this.game_length--
-      console.log(this.game_length)
   }
 
   gameLoop(game_length) {
@@ -56,7 +58,15 @@ export class MentalTrainerComponent implements OnInit {
 
   getRandomColor() {
     let color = Math.floor(0x1000000 * Math.random()).toString(16);
-    return '#' + ('000000' + color).slice(-6);
+    this.color = '#' + ('000000' + color).slice(-6);
   }
   
+  toRecords() {
+    if(this.isRecords === true) {
+      this.isRecords = false
+    }
+    else { 
+      this.isRecords = true
+    }
+  }
 }

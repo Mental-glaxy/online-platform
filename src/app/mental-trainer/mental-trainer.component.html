@@ -1,3 +1,16 @@
-<p>mental-trainer works!</p>
-<button (click)="gameLoop(10)">Start</button>
-<b [ngStyle]="{'color': getRandomColor()}">{{result}}</b>
+<div class="min-w-screen min-h-screen  flex items-center justify-center px-5 py-5 bckg">
+    <div class="container mx-auto max-w-sm rounded-lg overflow-hidden shadow-lg my-2 bg-white">
+        <div *ngIf="isRecords === false">
+            <button class="fill" (click)="gameLoop(10)" href="javascript:void(0);">
+                Start
+            </button>
+            <b [ngStyle]="{'color': color}" class="nums">{{result}}</b>
+            <button (click)="toRecords()">Рекорды</button>
+        </div>
+        <div *ngIf="isRecords === true">
+            <app-results-table ></app-results-table>
+            <br>
+            <a  class="previous round" (click)="isRecords = false"  title="Назад" rel="prev">« Назад</a>
+        </div>
+    </div>
+</div>
