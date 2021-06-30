@@ -1,16 +1,74 @@
-<div class="min-w-screen min-h-screen  flex items-center justify-center px-5 py-5 bckg">
+<div class="  flex items-center justify-center px-5 py-5 bckg">
     <div class="container mx-auto max-w-sm rounded-lg overflow-hidden shadow-lg my-2 bg-white">
         <div *ngIf="isRecords === false">
-            <button class="fill" (click)="gameLoop(10)" href="javascript:void(0);">
+            <div class="inline">
+            <div
+            class="flex flex-row border h-10 w-24 rounded-lg border-gray-400 relative"
+          >
+            <button  (click)="stepsSetter('-')"
+              class="font-semibold border-r bg-purple-700 hover:bg-purple-500 text-white border-gray-400 h-full w-20 flex rounded-l focus:outline-none cursor-pointer"
+            >
+              <span class="m-auto" >-</span>
+            </button>
+            <div
+              class="bg-white w-24 text-xs md:text-base flex items-center justify-center cursor-default"
+            >
+              <span>{{game_length}}</span>
+            </div>
+        
+            <button (click)="stepsSetter('+')"
+              class="font-semibold border-l  bg-blue-700 hover:bg-blue-600 text-white border-gray-400 h-full w-20 flex rounded-r focus:outline-none cursor-pointer"
+            >
+              <span class="m-auto" >+</span>
+            </button>
+          </div><br>
+          <div
+            class="flex flex-row border h-10 w-24 rounded-lg border-gray-400 relative"
+          >
+            <button (click)="speedSetter('-')"
+              class="font-semibold border-r bg-purple-700 hover:bg-purple-500 text-white border-gray-400 h-full w-20 flex rounded-l focus:outline-none cursor-pointer"
+            >
+              <span class="m-auto">-</span>
+            </button>
+            <input
+              class="md:p-2 p-1 text-xs md:text-base border-gray-400 focus:outline-none text-center"
+              name="custom-input-number"
+              type="number" placeholder="{{speed}}"
+              value="{{speed}}"
+            />
+            <div
+              class="bg-white w-24 text-xs md:text-base  cursor-default"
+            >
+              
+            </div>
+        
+            <button  (click)="speedSetter('+')"
+              class="font-semibold border-l  bg-blue-700 hover:bg-blue-600 text-white border-gray-400 h-full w-20 flex rounded-r focus:outline-none cursor-pointer"
+            >
+              <span class="m-auto">+</span>
+            </button>
+            <div
+            class="absolute flex flex-col p-2 w-32 md:w-full mt-6 md:mt-8 mt-10 flex items-start justify-center"
+          >
+            <svg width="10" height="10" class="fill-current ml-5 md:mx-auto">
+              <polygon points="0 10, 10 10, 5 0" />
+            </svg>
+            <span
+              class="text-xs block w-48 flex flex-wrap justify-center bg-black p-3 h-auto rounded-lg text-white"
+            >Скорость</span>
+          </div>
+        </div>
+          </div>
+            <button class="fill" (click)="gameLoop()" [disabled]="checkSteps()">
                 Start
             </button>
-            <b [ngStyle]="{'color': color}" class="nums">{{result}}</b>
-            <button (click)="toRecords()">Рекорды</button>
+            <b [ngStyle]="{'color': color}" class="nums">{{num_now}}</b>
+            <button (click)="toRecords()" class="fill">Рекорды</button>
         </div>
         <div *ngIf="isRecords === true">
             <app-results-table ></app-results-table>
             <br>
-            <a  class="previous round" (click)="isRecords = false"  title="Назад" rel="prev">« Назад</a>
+            <a  class="previous round" (click)="isRecords = false"  title="Назад" rel="prev" >« Назад</a>
         </div>
     </div>
 </div>

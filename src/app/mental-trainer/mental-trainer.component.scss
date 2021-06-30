@@ -1,4 +1,6 @@
-
+.bckg {
+    height: 780px;
+}
 .back-btn {
     width: 50px;
     height: 25px;
@@ -28,6 +30,7 @@ a {
 }
 
 .fill {
+    margin: 30px;
     font-size: 20px;
     font-weight: 200;
     letter-spacing: 1px;
@@ -51,7 +54,10 @@ a {
     transition: 0.2s;
   }
   
-  .fill:hover::after {
+  .fill:hover {
     top: 0px;
     left: 0px;
+    background-color: #ffe54c;
+    
+    transition: 0.2s;
   }

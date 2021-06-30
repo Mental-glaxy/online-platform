@@ -15,12 +15,13 @@ export class MentalTrainerComponent implements OnInit {
 
    result = 0
    game_length = 10
-   speed = 0.1
+   speed = 0.3
    gameLoopVar:any
    lvl = '1'
    config:Params
    color = '000000'
    isRecords = false
+   num_now = 0
   constructor() {
     this.config = {
       game_length:this.game_length,
@@ -28,28 +29,52 @@ export class MentalTrainerComponent implements OnInit {
       lvl: this.lvl
     }
    }
-   ngDoCheck() {
-     this.getRandomColor()
-   }
   ngOnInit(): void {
+    this.getRandomColor()
+  }
+  ngOnChanges() {
+    this.getRandomColor()
   }
   private generateNum(min:number, max:number) {
     return Math.floor(Math.random() * (max - min)) + min
 
   }
    private startAction() {
-      this.result += this.generateNum(-9,9)
+     this.getRandomColor()
+      this.num_now = this.generateNum(-9,9)
+      this.result += this.num_now
       this.game_length--
   }
+  stepsSetter(s) {
+    if(s === '+')
+      this.game_length +=1
+    else 
+      this.game_length -=1
+    if(this.game_length < 0)
+      this.game_length = 0
+  }
+  speedSetter(s) {
+    if(s === '+')
+      this.speed += 0.1
+    else 
+    this.speed -= 0.1
+    if(this.speed < 0.1)
+    this.speed = 0.1
+    this.speed.toFixed(2)
+  }
 
-  gameLoop(game_length) {
+  checkSteps() {
+    if(this.game_length <= 0)
+      return true
+    return false
+  }
+  gameLoop() {
     this.gameLoopVar = setInterval(()=>{
       this.startAction()
       if(this.game_length <= 0) {
         clearInterval(this.gameLoopVar);
-        this.game_length = game_length
       }
-    }, this.config.speed * 1000);
+    }, this.config.speed * 800);
   }
 
   showAnswer(){
