@@ -1,18 +1,15 @@
-FROM node:10 AS builder
+FROM node:latest as build
 
-WORKDIR /app
+WORKDIR /usr/local/app
 
-COPY . .
+COPY ./ /usr/local/app/
 
-RUN npm i && npm run build
+RUN npm install
 
+RUN npm run build
 
-FROM nginx:alpine
+FROM nginx:latest
 
-WORKDIR /usr/share/nginx/html
+COPY --from=build /usr/local/app/dist/online-platform /usr/share/nginx/html
 
-RUN rm -rf ./*
-
-COPY --from=builder /app/dist/online-platform .
-
-ENTRYPOINT ["nginx", "-g", "daemon off;"]
+EXPOSE 80
