@@ -98,21 +98,22 @@ export class MentalTrainerComponent implements OnInit {
       const data = {
         user_name: this.cookie.get('login'),
         speed: this.speed,
-        result: parseInt(this.user_num),
+        result: parseInt(this.user_num).toFixed(2),
         steps: this._showGameLength,
         right_result: this.result,
         date: Date.now()
       }
       if(parseInt(this.user_num) === this.result){
-        alert("Совершенно верно!")
         this.game.setInfoGame(data).subscribe((res:any)=>{
           console.log(res)
         })
+        alert("Совершенно верно!")
+      } else {
+        this.game.setInfoGame(data).subscribe((res:any)=>{
+          console.log(res)
+        })
+        alert("Ответ неверный(")
       }
-      this.game.setInfoGame(data).subscribe((res:any)=>{
-        console.log(res)
-      })
-      alert("Ответ неверный(")
     }
     else 
     this.is_game_over = false

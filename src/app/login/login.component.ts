@@ -10,7 +10,7 @@ import { CookieService } from 'ngx-cookie-service';
 })
 export class LoginComponent implements OnInit {
   loginForm: FormGroup
-  loading = false
+  isLoaded = true
   constructor(private router: Router,private fb: FormBuilder, private auth: AuthService, private cookie: CookieService ) { }
 
   ngOnInit(): void {
@@ -28,8 +28,8 @@ export class LoginComponent implements OnInit {
     } else {
       console.log(this.loginForm)
       this.auth.login(this.loginForm.value).subscribe((res) =>{
-        if(res) {
-          this.loading = true
+        if(res.status === "successful") {
+          this.isLoaded = false
           this.cookie.set('auth', res.status)
           this.cookie.set('login', res.data.user.login)
           this.cookie.set('email', res.data.user.email)
@@ -41,8 +41,8 @@ export class LoginComponent implements OnInit {
           console.clear()
         }
       })
+      this.isLoaded = true
     }
-    this.loading = false
   }
   toRegister() {
     this.router.navigate(['register'])

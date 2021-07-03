@@ -17,7 +17,7 @@ interface Register {
   providedIn: 'root'
 })
 export class AuthService {
-  url = "http://localhost:5000"
+  url = "https://mental-galaxy-backend-i4mlymzxhq-uc.a.run.app"
   httpOptions = {
     headers: new HttpHeaders({ 'Content-Type': 'application/json', 'Access-Control-Allow-Origin': '*',
     'Access-Control-Allow-Methods': 'GET, POST, PATCH, DELETE, PUT, OPTIONS' })

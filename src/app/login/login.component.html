@@ -1,7 +1,7 @@
 <script src="https://cdn.jsdelivr.net/gh/alpinejs/alpine@v2.x.x/dist/alpine.js" defer></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/zxcvbn/4.4.2/zxcvbn.js"></script>
 <div class="min-w-screen min-h-screen  flex items-center justify-center px-5 py-5 bckg">
-    <div class="bg-gray-100 text-gray-500 rounded-3xl shadow-xl w-full overflow-hidden" style="max-width:1000px">
+    <div class="bg-gray-100 text-gray-500 rounded-3xl shadow-xl w-full overflow-hidden" style="max-width:1000px" >
         <div class="md:flex w-max-content">
             <div class="hidden md:block w-1/2 bg-indigo-500">
                 <img src="../../assets/32 Fondos de Pantalla Iphone X HD y Iphone XS Max Nuevos.png">
@@ -29,15 +29,9 @@
                             </div>
                         </div>
                     </div>
-                    <div class="flex -mx-3" *ngIf="loading === false">
+                    <div class="flex -mx-3">
                         <div class="w-full px-3 mb-5">
                             <button class="block w-full max-w-xs mx-auto bg-indigo-500 hover:bg-indigo-700 focus:bg-indigo-700 text-white rounded-lg px-3 py-3 font-semibold" type="submit"  [disabled]="loginForm.invalid">Войти</button>
-                        </div>
-                        <br>
-                    </div>
-                    <div class="flex -mx-3" *ngIf="loading === true">
-                        <div class="w-full px-3 mb-5">
-                            <button class="block w-full max-w-xs mx-auto bg-indigo-500 hover:bg-indigo-700 focus:bg-indigo-700 text-white rounded-lg px-3 py-3 font-semibold bg-gray-200 w-full animate-pulse h-14" type="submit"  [disabled]="true">Войти</button>
                         </div>
                         <br>
                     </div>

@@ -14,7 +14,7 @@ interface GameInfo {
   providedIn: 'root'
 })
 export class GameService {
-  url = "http://localhost:5000"
+  url = "https://mental-galaxy-backend-i4mlymzxhq-uc.a.run.app"
   httpOptions = {
     headers: new HttpHeaders({ 'Content-Type': 'application/json',
     'Access-Control-Allow-Origin': '*',

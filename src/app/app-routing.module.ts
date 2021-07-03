@@ -19,6 +19,7 @@ const routes: Routes = [
   },
   { 
     path:"game/results",
+    canActivate: [AuthGuard],
     component:ResultsTableComponent
   },
   {
