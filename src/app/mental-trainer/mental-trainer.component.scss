@@ -1,6 +1,9 @@
 .bckg {
     height: 780px;
 }
+.start {
+  background-color: #8b4cff;
+}
 .back-btn {
     width: 50px;
     height: 25px;
@@ -26,7 +29,7 @@ a {
   }
   
 .nums {
-    font-size: 130px;
+    font-size: 80px;
 }
 
 .fill {
@@ -34,7 +37,7 @@ a {
     font-size: 20px;
     font-weight: 200;
     letter-spacing: 1px;
-    padding: 13px 50px 13px;
+    padding: 13px 25px 13px;
     outline: 0;
     border: 1px solid black;
     cursor: pointer;
@@ -42,9 +45,9 @@ a {
     background-color: rgba(0, 0, 0, 0);
   }
   
-  .fill::after {
+  .fill::after  {
     content: "";
-    background-color: #ffe54c;
+    background-color: #a04cff;
     width: 100%;
     z-index: -1;
     position: absolute;
@@ -60,4 +63,7 @@ a {
     background-color: #ffe54c;
     
     transition: 0.2s;
+  }
+  .size {
+    width: max-content;
   }

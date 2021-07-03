@@ -24,8 +24,8 @@ export class GameService {
   };
   constructor(private http: HttpClient, private cookie:CookieService) { }
 
-  setInfoGame(data:GameInfo):Observable<any> {
-    return this.http.post<any>(`${this.url}/save-stats`, data, this.httpOptions)
+  setInfoGame(data:any):Observable<any> {
+    return this.http.post<any>(`${this.url}/stats`, data, this.httpOptions)
   }
   getInfoGame():Observable<any> {
     return this.http.get<any>(`${this.url}/stats`, this.httpOptions)

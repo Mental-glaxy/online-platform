@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { GameService } from '../game.service';
 
 @Component({
   selector: 'app-results-table',
@@ -6,10 +7,18 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./results-table.component.scss']
 })
 export class ResultsTableComponent implements OnInit {
-
-  constructor() { }
+  table_data = []
+  constructor(private game:GameService) { }
 
   ngOnInit(): void {
+    this.getGamesInfo()
   }
-
+  getGamesInfo() {
+    this.game.getInfoGame().subscribe((data:any) =>{
+      if (data.status === "successful"){
+        this.table_data = data.data
+      }
+      console.log(this.table_data)
+    })
+  }
 }

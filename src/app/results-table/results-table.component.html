@@ -1,37 +1,39 @@
-<table>
-    <caption>Рейтинг</caption>
-    <thead>
-      <tr>
-        <th scope="col">Имя</th>
-        <th scope="col">Дата</th>
-        <th scope="col">Уровень</th>
-        <th scope="col">Скорость</th>
-      </tr>
-    </thead>
-    <tbody>
-      <tr>
-        <td data-label="Имя">Visa - 3412</td>
-        <td data-label="Дата">04/01/2016</td>
-        <td data-label="Уровень">$1,190</td>
-        <td data-label="Скорость">03/01/2016 - 03/31/2016</td>
-      </tr>
-      <tr>
-        <td data-label="Имя">Visa - 3412</td>
-        <td data-label="Дата">04/01/2016</td>
-        <td data-label="Уровень">$1,190</td>
-        <td data-label="Сокрость">03/01/2016 - 03/31/2016</td>
-      </tr>
-      <tr>
-        <td data-label="Имя">Visa - 3412</td>
-        <td data-label="Дата">04/01/2016</td>
-        <td data-label="Уровень">$1,190</td>
-        <td data-label="Скорость">03/01/2016 - 03/31/2016</td>
-      </tr>
-      <tr>
-        <td data-label="Имя">Visa - 3412</td>
-        <td data-label="Дата">04/01/2016</td>
-        <td data-label="Уровень">$1,190</td>
-        <td data-label="Скорость">03/01/2016 - 03/31/2016</td>
-      </tr>
-    </tbody>
-  </table>
+
+      <table class="full-min-w table-auto centered">
+        <thead class="justify-between">
+          <tr class="bg-white">
+            <th scope="col">Имя</th>
+             <th scope="col">Дата</th>
+            <th scope="col">Уровень</th>
+            <th scope="col">Шаги</th>
+            <th scope="col">Скорость</th>
+            <th scope="col">Ответ</th>
+            <th scope="col">Правильный ответ</th>
+          </tr>
+        </thead>
+        <tbody class="text-gray-100 bg-gradient-to-l from-indigo-500 to-indigo-800" *ngFor="let res of table_data">
+          <tr>
+            <td class="px-16 py-2">
+              <span>{{res.user_name}}</span>
+            </td>
+            <td class="px-16 py-2">
+              <span>{{res.date | date: 'M/d/yy, h:mm a'}}</span>
+            </td>
+            <td class="px-16 py-2">
+              <span>ПРОСТО</span>
+            </td>
+            <td class="px-16 py-2">
+              <span>{{res.steps}}</span>
+            </td>
+            <td class="px-16 py-2">
+              <span>{{res.speed}}</span>
+            </td>
+            <td class="px-16 py-2">
+              <span>{{res.result}}</span>
+            </td>
+            <td class="px-16 py-2 bg-green">
+              <span>{{res.right_result}}</span>
+            </td>
+          </tr>
+        </tbody>
+      </table>

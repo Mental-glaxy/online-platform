@@ -1,5 +1,5 @@
-<div class="  flex items-center justify-center px-5 py-5 bckg">
-    <div class="container mx-auto max-w-sm rounded-lg overflow-hidden shadow-lg my-2 bg-white">
+<div class="  flex items-center justify-center px-20 py-20 bckg">
+    <div class="container mx-auto max-w-sm rounded-lg overflow-hidden shadow-lg my-2 bg-white size">
         <div *ngIf="isRecords === false">
             <div class="inline">
             <div
@@ -21,7 +21,8 @@
             >
               <span class="m-auto" >+</span>
             </button>
-          </div><br>
+          </div>
+          <span  class="m-auto font-semibold border-l ">Кол-во шагов</span><br>
           <div
             class="flex flex-row border h-10 w-24 rounded-lg border-gray-400 relative"
           >
@@ -47,28 +48,21 @@
             >
               <span class="m-auto">+</span>
             </button>
-            <div
-            class="absolute flex flex-col p-2 w-32 md:w-full mt-6 md:mt-8 mt-10 flex items-start justify-center"
-          >
-            <svg width="10" height="10" class="fill-current ml-5 md:mx-auto">
-              <polygon points="0 10, 10 10, 5 0" />
-            </svg>
-            <span
-              class="text-xs block w-48 flex flex-wrap justify-center bg-black p-3 h-auto rounded-lg text-white"
-            >Скорость</span>
-          </div>
         </div>
+        <span  class="m-auto font-semibold border-l ">Скорость</span>
           </div>
-            <button class="fill" (click)="gameLoop()" [disabled]="checkSteps()">
-                Start
-            </button>
-            <b [ngStyle]="{'color': color}" class="nums">{{num_now}}</b>
-            <button (click)="toRecords()" class="fill">Рекорды</button>
-        </div>
-        <div *ngIf="isRecords === true">
-            <app-results-table ></app-results-table>
-            <br>
-            <a  class="previous round" (click)="isRecords = false"  title="Назад" rel="prev" >« Назад</a>
+            <div class="container">
+              <b [ngStyle]="{'color': color}" class="nums">{{num_now}}</b>
+            </div>
+            <button class="fill start" (click)="gameLoop()" [disabled]="checkSteps()">
+              Start
+          </button>
+          <input *ngIf="is_game_over === true" class="fill" readonly type="disabled" value="{{result}}" >
+          <input *ngIf="is_done" class="fill"  placeholder="Ваш ответ" (keyup)="onKey($event)" [disabled]="!is_done">
+          <button class="fill start" (click)="showAnswer()">
+          Показать ответ
+        </button>
+            <button routerLink="results" class="fill">Рекорды</button>
         </div>
     </div>
 </div>

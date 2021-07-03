@@ -31,7 +31,7 @@ export class AuthService {
   logout() {
     return this.http.post<any>(`${this.url}/logout`, this.httpOptions)
   }
-  register(data:Register) {
+  register(data:any) {
     return this.http.post<Register>(`${this.url}/register`,data, this.httpOptions)
   }
 }

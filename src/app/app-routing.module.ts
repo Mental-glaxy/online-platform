@@ -6,6 +6,7 @@ import { EdThemesComponent } from './ed-themes/ed-themes.component';
 import { LoginComponent } from './login/login.component';
 import { MentalTrainerComponent } from './mental-trainer/mental-trainer.component';
 import { RegisterComponent } from './register/register.component';
+import { ResultsTableComponent } from './results-table/results-table.component';
 const routes: Routes = [
   { 
     path:"game",
@@ -15,6 +16,10 @@ const routes: Routes = [
   { 
     path:"",
     component:EdThemesComponent
+  },
+  { 
+    path:"game/results",
+    component:ResultsTableComponent
   },
   {
     path:"account",
