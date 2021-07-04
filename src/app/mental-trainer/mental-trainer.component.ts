@@ -15,9 +15,9 @@ interface Params {
 })
 export class MentalTrainerComponent implements OnInit {
    result = 0
-   game_length = 10
+   game_length = 100
    private _showGameLength = 0
-   speed = 0.3
+   speed = 0.1
    gameLoopVar:any
    lvl = '1'
    config:Params
@@ -47,6 +47,9 @@ export class MentalTrainerComponent implements OnInit {
    private startAction() {
      this.getRandomColor()
       this.num_now = this.generateNum(-9,9)
+      while(Math.abs(this.result + this.num_now) > 9 || this.result + this.num_now > 9){
+        this.num_now = this.generateNum(-9,9)
+      }
       this.result += this.num_now
       this.game_length--
   }
@@ -81,7 +84,7 @@ export class MentalTrainerComponent implements OnInit {
         this.is_done = true
         clearInterval(this.gameLoopVar);
       }
-    }, this.config.speed * 800);
+    }, this.config.speed * 1000);
   }
 
   onKey(e:any) {
@@ -108,15 +111,17 @@ export class MentalTrainerComponent implements OnInit {
           console.log(res)
         })
         alert("Совершенно верно!")
+        setTimeout(()=>{this.resetGame()}, 2000)
       } else {
         this.game.setInfoGame(data).subscribe((res:any)=>{
           console.log(res)
         })
         alert("Ответ неверный(")
+        setTimeout(()=>{this.resetGame()}, 2000)
       }
     }
     else 
-    this.is_game_over = false
+    this.resetGame()
   }
   
   toRecords() {
@@ -126,5 +131,19 @@ export class MentalTrainerComponent implements OnInit {
     else { 
       this.isRecords = true
     }
+  }
+  num_checker(num:number){
+    if(num >= 0){
+      return '+'+num
+    }
+    return  num
+  }
+  private resetGame() {
+    this.is_game_over = false 
+    this.speed = 0.1
+    this.game_length = 100
+    this.result = 0
+    this.num_now = 0
+    this.is_done = false
   }
 }

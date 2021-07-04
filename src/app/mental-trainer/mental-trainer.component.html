@@ -13,7 +13,14 @@
             <div
               class="bg-white w-24 text-xs md:text-base flex items-center justify-center cursor-default"
             >
-              <span>{{game_length}}</span>
+              <span><input
+                class="md:p-2 p-1 text-xs md:text-base border-gray-400 focus:outline-none text-center"
+                style="width:90px"
+                name="custom-input-number"
+                type="number" placeholder="{{game_length}}"
+                value="{{game_length}}"
+                [(ngModel)]="game_length"
+              /></span>
             </div>
         
             <button (click)="stepsSetter('+')"
@@ -22,7 +29,8 @@
               <span class="m-auto" >+</span>
             </button>
           </div>
-          <span  class="m-auto font-semibold border-l ">Кол-во шагов</span><br>
+          <span  class="m-auto font-semibold border-l ">Кол-во шагов</span>
+        <br>
           <div
             class="flex flex-row border h-10 w-24 rounded-lg border-gray-400 relative"
           >
@@ -32,10 +40,12 @@
               <span class="m-auto">-</span>
             </button>
             <input
+            
               class="md:p-2 p-1 text-xs md:text-base border-gray-400 focus:outline-none text-center"
               name="custom-input-number"
               type="number" placeholder="{{speed}}"
               value="{{speed}}"
+              [(ngModel)]="speed"
             />
             <div
               class="bg-white w-24 text-xs md:text-base  cursor-default"
@@ -52,7 +62,7 @@
         <span  class="m-auto font-semibold border-l ">Скорость</span>
           </div>
             <div class="container">
-              <b [ngStyle]="{'color': color}" class="nums">{{num_now}}</b>
+              <b [ngStyle]="{'color': color}" class="nums">{{num_checker(num_now)}}</b>
             </div>
             <button class="fill start" (click)="gameLoop()" [disabled]="checkSteps()">
               Start
