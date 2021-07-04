@@ -45,7 +45,7 @@
               name="custom-input-number"
               type="number" placeholder="{{speed}}"
               value="{{speed}}"
-              [(ngModel)]="speed"
+              (keyup)="onKeySpeed($event)"
             />
             <div
               class="bg-white w-24 text-xs md:text-base  cursor-default"

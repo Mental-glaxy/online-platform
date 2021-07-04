@@ -87,11 +87,14 @@ export class MentalTrainerComponent implements OnInit {
         this.hideMenus = false
         clearInterval(this.gameLoopVar);
       }
-    }, this.config.speed * 1000);
+    }, this.speed * 1000);
   }
 
   onKey(e:any) {
     this.user_num = e.target.value;
+  }
+  onKeySpeed(e:any) {
+    this.speed = e.target.value;
   }
 
   getRandomColor() {
