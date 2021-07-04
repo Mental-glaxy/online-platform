@@ -30,6 +30,10 @@ a {
   
 .nums {
     font-size: 80px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-right: 40px;
 }
 
 .fill {

@@ -46,8 +46,8 @@ export class MentalTrainerComponent implements OnInit {
   }
    private startAction() {
      this.getRandomColor()
-      this.num_now = this.generateNum(-9,9)
-      while(Math.abs(this.result + this.num_now) > 9 || this.result + this.num_now > 9){
+      this.num_now = this.generateNum(1,9)
+      while(this.result + this.num_now > 9){
         this.num_now = this.generateNum(-9,9)
       }
       this.result += this.num_now
@@ -111,13 +111,13 @@ export class MentalTrainerComponent implements OnInit {
           console.log(res)
         })
         alert("Совершенно верно!")
-        setTimeout(()=>{this.resetGame()}, 2000)
+        setTimeout(()=>{this.resetGame()}, 5000)
       } else {
         this.game.setInfoGame(data).subscribe((res:any)=>{
           console.log(res)
         })
         alert("Ответ неверный(")
-        setTimeout(()=>{this.resetGame()}, 2000)
+        setTimeout(()=>{this.resetGame()}, 5000)
       }
     }
     else 
