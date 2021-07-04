@@ -29,7 +29,7 @@ a {
   }
   
 .nums {
-    font-size: 80px;
+    font-size: 150px;
     display: flex;
     justify-content: center;
     align-items: center;
@@ -69,5 +69,7 @@ a {
     transition: 0.2s;
   }
   .size {
+    min-width: 200px;
     width: max-content;
   }
+

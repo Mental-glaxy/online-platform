@@ -1,7 +1,7 @@
 <div class="  flex items-center justify-center px-20 py-20 bckg">
-    <div class="container mx-auto max-w-sm rounded-lg overflow-hidden shadow-lg my-2 bg-white size">
+    <div class="container mx-auto max-w-sm rounded-lg overflow-hidden shadow-lg my-2 mx-2 bg-white size">
         <div *ngIf="isRecords === false">
-            <div class="inline">
+            <div class="inline" *ngIf="hideMenus === false">
             <div
             class="flex flex-row border h-10 w-24 rounded-lg border-gray-400 relative"
           >
@@ -62,17 +62,17 @@
         <span  class="m-auto font-semibold border-l ">Скорость</span>
           </div>
             <div class="container">
-              <b [ngStyle]="{'color': color}" class="nums">{{num_checker(num_now)}}</b>
+              <b [ngStyle]="{'color': color}" class="nums" *ngIf="is_game_over === false">{{num_checker(num_now)}}</b>
             </div>
-            <button class="fill start" (click)="gameLoop()" [disabled]="checkSteps()">
+            <button class="fill start" (click)="gameLoop()" [disabled]="checkSteps()" *ngIf="hideMenus === false">
               Start
           </button>
           <input *ngIf="is_game_over === true" class="fill" readonly type="disabled" value="{{result}}" >
           <input *ngIf="is_done" class="fill"  placeholder="Ваш ответ" (keyup)="onKey($event)" [disabled]="!is_done">
-          <button class="fill start" (click)="showAnswer()">
+          <button class="fill start" (click)="showAnswer()" *ngIf="hideMenus === false" >
           Показать ответ
         </button>
-            <button routerLink="results" class="fill">Рекорды</button>
+            <button routerLink="results" class="fill" *ngIf="hideMenus === false" >Рекорды</button>
         </div>
     </div>
 </div>

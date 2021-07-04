@@ -26,6 +26,7 @@ export class MentalTrainerComponent implements OnInit {
    num_now = 0
    is_done = false
    is_game_over = false
+   hideMenus = false
    user_num = '0'
   constructor(private game:GameService, private cookie: CookieService) {
     this.config = {
@@ -77,11 +78,13 @@ export class MentalTrainerComponent implements OnInit {
     return false
   }
   gameLoop() {
+    this.hideMenus = true
     this._showGameLength = this.game_length
     this.gameLoopVar = setInterval(()=>{
       this.startAction()
       if(this.game_length <= 0) {
         this.is_done = true
+        this.hideMenus = false
         clearInterval(this.gameLoopVar);
       }
     }, this.config.speed * 1000);
