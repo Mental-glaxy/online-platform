@@ -46,7 +46,7 @@ export class MentalTrainerComponent implements OnInit {
 
   }
    private startAction() {
-     this.getRandomColor()
+      this.getRandomColor()
       this.num_now = this.generateNum(1,9)
       while(this.result + this.num_now > 9){
         this.num_now = this.generateNum(-9,9)
