@@ -15,9 +15,14 @@ interface Params {
 })
 export class MentalTrainerComponent implements OnInit {
    result = 0
+   nums_arr = [
+    8, 1, -3, -4, 3, -5, 3, 3, -4, 7, -6, -2, 7, -3, 2, 1, 1, -6, 4, -5, 3, 4, -1, -3, -4, 5, -8, 5, -4, 4, 5, -7, 6, 2, -6, 1, 5, -4,
+     3, -7, 8, -8, 3, -7, 8, 3, -6, 2, -7, 7, -3, 2, 1, -6, 8, 2, -5, -2, 5, -6,
+     1, 3, 3, 1, 1, -5, 3, -5, 5, 2, -1, -5, 4, 2, -5, 4, -5, 6, -7, 5, 0, -6, 4, -8, 7, 1, 4, -4, 2, -6, 2, 2, -7, 6, 4, -2, -2, 2, -5, 5
+   ]
    game_length = 100
    private _showGameLength = 0
-   speed = 0.1
+   speed = 0.2
    gameLoopVar:any
    lvl = '1'
    config:Params
@@ -29,47 +34,42 @@ export class MentalTrainerComponent implements OnInit {
    hideMenus = false
    user_num = '0'
   constructor(private game:GameService, private cookie: CookieService) {
-    this.config = {
-      game_length:this.game_length,
-      speed: this.speed,
-      lvl: this.lvl
-    }
    }
   ngOnInit(): void {
     this.getRandomColor()
+    
   }
   ngOnChanges() {
     this.getRandomColor()
   }
-  private generateNum(min:number, max:number) {
-    return Math.floor(Math.random() * (max - min)) + min
 
-  }
-   private startAction() {
+   private startAction(index:number) {
       this.getRandomColor()
-      this.num_now = this.generateNum(1,9)
-      while(this.result + this.num_now > 9){
-        this.num_now = this.generateNum(-9,9)
-      }
-      this.result += this.num_now
+      this.result += this.nums_arr[index]
+      this.num_now = this.nums_arr[index]
+      // this.num_now = this.generateNum(1,9)
+      // while(this.result + this.num_now > 9){
+      //   this.num_now = this.generateNum(-9,9)
+      // }
+      // this.result += this.num_now
       this.game_length--
   }
   stepsSetter(s) {
-    if(s === '+')
-      this.game_length +=1
-    else 
-      this.game_length -=1
-    if(this.game_length < 0)
-      this.game_length = 0
+    // if(s === '+')
+    //   this.game_length +=1
+    // else 
+    //   this.game_length -=1
+    // if(this.game_length < 0)
+    //   this.game_length = 0
   }
   speedSetter(s) {
-    if(s === '+')
-      this.speed += 0.1
-    else 
-    this.speed -= 0.1
-    if(this.speed < 0.1)
-    this.speed = 0.1
-    this.speed.toFixed(2)
+    // if(s === '+')
+    //   this.speed += 0.1
+    // else 
+    // this.speed -= 0.1
+    // if(this.speed < 0.1)
+    // this.speed = 0.1
+    // this.speed.toFixed(2)
   }
 
   checkSteps() {
@@ -80,21 +80,23 @@ export class MentalTrainerComponent implements OnInit {
   gameLoop() {
     this.hideMenus = true
     this._showGameLength = this.game_length
+    let i = 0
     this.gameLoopVar = setInterval(()=>{
-      this.startAction()
+      this.startAction(i)
+      i+=1
       if(this.game_length <= 0) {
         this.is_done = true
         this.hideMenus = false
         clearInterval(this.gameLoopVar);
       }
-    }, this.speed * 1000);
+    }, this.speed * 900);
   }
 
   onKey(e:any) {
     this.user_num = e.target.value;
   }
   onKeySpeed(e:any) {
-    this.speed = e.target.value;
+    //this.speed = e.target.value;
   }
 
   getRandomColor() {
@@ -112,7 +114,7 @@ export class MentalTrainerComponent implements OnInit {
         right_result: this.result,
         date: Date.now()
       }
-      if(parseInt(this.user_num) === this.result){
+      if(parseInt(this.user_num) === 6){
         this.game.setInfoGame(data).subscribe((res:any)=>{
           console.log(res)
         })
@@ -146,7 +148,7 @@ export class MentalTrainerComponent implements OnInit {
   }
   private resetGame() {
     this.is_game_over = false 
-    this.speed = 0.1
+    this.speed = 0.3
     this.game_length = 100
     this.result = 0
     this.num_now = 0
