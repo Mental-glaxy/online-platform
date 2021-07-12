@@ -15,11 +15,16 @@ interface Params {
 })
 export class MentalTrainerComponent implements OnInit {
    result = 0
+   stage = 1
    nums_arr = [
     8, 1, -3, -4, 3, -5, 3, 3, -4, 7, -6, -2, 7, -3, 2, 1, 1, -6, 4, -5, 3, 4, -1, -3, -4, 5, -8, 5, -4, 4, 5, -7, 6, 2, -6, 1, 5, -4,
      3, -7, 8, -8, 3, -7, 8, 3, -6, 2, -7, 7, -3, 2, 1, -6, 8, 2, -5, -2, 5, -6,
      1, 3, 3, 1, 1, -5, 3, -5, 5, 2, -1, -5, 4, 2, -5, 4, -5, 6, -7, 5, 0, -6, 4, -8, 7, 1, 4, -4, 2, -6, 2, 2, -7, 6, 4, -2, -2, 2, -5, 5
    ]
+   nums_arr2 = [2, 6, 0, -3, 1, 3, 0, -5, 5, -1, -4, 1, 2, -2, 2, 1, 0, -4, 4, -1, 1, -4, 4, 1, -2, -4, 2, 2, 2, 
+    -1, 1, -1, 0, -5, 5, 0, -3, 3, -5, 5, -3, 4, -2, -1, 2, 1, -1, 1, 0, -1, 0, -5, 6, 0, -4, 4, -4, 2, -5, 2, 1, 3, 0, -3, 1, -1, -2, 1, 5, 
+    -2, -5, 3, 2, -4, 5, -2, 3, -1, -4, 1, 2, -1, 3, -2, 2, -1, 0, -3, 1, 2, -2, -1, 2, -2, 0, -4, 5, 3, -1, 1]
+
    game_length = 100
    private _showGameLength = 0
    speed = 0.2
@@ -45,13 +50,13 @@ export class MentalTrainerComponent implements OnInit {
 
    private startAction(index:number) {
       this.getRandomColor()
-      this.result += this.nums_arr[index]
-      this.num_now = this.nums_arr[index]
-      // this.num_now = this.generateNum(1,9)
-      // while(this.result + this.num_now > 9){
-      //   this.num_now = this.generateNum(-9,9)
-      // }
-      // this.result += this.num_now
+      if(this.stage == 1){
+        this.result += this.nums_arr[index]
+        this.num_now = this.nums_arr[index]
+      } else if(this.stage == 2) {
+        this.result += this.nums_arr2[index]
+        this.num_now = this.nums_arr2[index]
+      }
       this.game_length--
   }
   stepsSetter(s) {
@@ -147,8 +152,9 @@ export class MentalTrainerComponent implements OnInit {
     return  num
   }
   private resetGame() {
+    this.stage = 2
     this.is_game_over = false 
-    this.speed = 0.3
+    this.speed = 0.2
     this.game_length = 100
     this.result = 0
     this.num_now = 0
