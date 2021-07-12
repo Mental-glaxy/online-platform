@@ -24,10 +24,10 @@ export class MentalTrainerComponent implements OnInit {
    nums_arr2 = [2, 6, 0, -3, 1, 3, 0, -5, 5, -1, -4, 1, 2, -2, 2, 1, 0, -4, 4, -1, 1, -4, 4, 1, -2, -4, 2, 2, 2, 
     -1, 1, -1, 0, -5, 5, 0, -3, 3, -5, 5, -3, 4, -2, -1, 2, 1, -1, 1, 0, -1, 0, -5, 6, 0, -4, 4, -4, 2, -5, 2, 1, 3, 0, -3, 1, -1, -2, 1, 5, 
     -2, -5, 3, 2, -4, 5, -2, 3, -1, -4, 1, 2, -1, 3, -2, 2, -1, 0, -3, 1, 2, -2, -1, 2, -2, 0, -4, 5, 3, -1, 1]
-
+   right_answer = 6 
    game_length = 100
    private _showGameLength = 0
-   speed = 0.2
+   speed = 0.3
    gameLoopVar:any
    lvl = '1'
    config:Params
@@ -119,7 +119,7 @@ export class MentalTrainerComponent implements OnInit {
         right_result: this.result,
         date: Date.now()
       }
-      if(parseInt(this.user_num) === 6){
+      if(parseInt(this.user_num) === this.right_answer){
         this.game.setInfoGame(data).subscribe((res:any)=>{
           console.log(res)
         })
@@ -153,8 +153,9 @@ export class MentalTrainerComponent implements OnInit {
   }
   private resetGame() {
     this.stage = 2
+    this.right_answer = 9
     this.is_game_over = false 
-    this.speed = 0.2
+    this.speed = 0.3
     this.game_length = 100
     this.result = 0
     this.num_now = 0
