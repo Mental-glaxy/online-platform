@@ -1,18 +1,11 @@
-FROM node:10 AS builder
-
+FROM node:latest as build
 WORKDIR /app
+COPY . . 
+RUN npm install
+RUN npm run build --prod
 
-COPY . .
 
-RUN npm i && npm run build
-
-
-FROM nginx:alpine
-
-WORKDIR /usr/share/nginx/html
-
-RUN rm -rf ./*
-
-COPY --from=builder /app/dist/online-platform .
-
-ENTRYPOINT ["nginx", "-g", "daemon off;"]
+FROM nginx:latest
+COPY --from=build /app/dist/snake-ui  /usr/share/nginx/html
+COPY nginx.conf /etc/nginx/conf.d/default.conf
+EXPOSE 80
