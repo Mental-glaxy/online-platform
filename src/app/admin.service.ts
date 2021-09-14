@@ -18,16 +18,18 @@ export class AdminService {
   private _url = env.url
   private _headers =  {
     headers: new HttpHeaders({
-      'token': env.token,
-      'login':env.login,
-      'email': env.email,
-      'password': env.password,
+      'token': this.cookie.get('token'),
+      'login': this.cookie.get('login'),
+      'email': this.cookie.get('email'),
+      'password':  this.cookie.get('password'),
       'Content-Type': 'application/json',
       'Access-Control-Allow-Origin': '*',
       'Access-Control-Allow-Methods': 'GET, POST, PATCH, DELETE, PUT, OPTIONS'
     })
   };
-  constructor(private http: HttpClient, private cookie: CookieService) { }
+  constructor(private http: HttpClient, private cookie: CookieService) {
+    this.cookie.set('token', env.token)
+   }
 
   getInvitationsList(): Observable<any> {
     return this.http.get(`${this._url}/prereg-users`, this._headers)

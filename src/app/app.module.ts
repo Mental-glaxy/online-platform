@@ -11,6 +11,7 @@ import { PreregUserComponent } from './prereg-user/prereg-user.component';
 import { InvStatsComponent } from './inv-stats/inv-stats.component';
 import { CookieService } from 'ngx-cookie-service';
 import { AdminService } from './admin.service';
+import { AuthPageComponent } from './auth-page/auth-page.component';
 
 @NgModule({
   declarations: [
@@ -20,7 +21,8 @@ import { AdminService } from './admin.service';
     AdminInfoComponent,
     PreregUsersComponent,
     PreregUserComponent,
-    InvStatsComponent
+    InvStatsComponent,
+    AuthPageComponent
   ],
   imports: [
     BrowserModule,
